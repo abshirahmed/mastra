@@ -5,7 +5,7 @@ import type { RequestContext } from '@mastra/core/request-context';
 import type { ObservationalMemoryRecord } from '@mastra/core/storage';
 
 import type { ObservationExtractionSession } from '../extraction-runner';
-import type { ObserveHooks } from '../types';
+import type { ObservationModelContext, ObserveHooks } from '../types';
 
 /** Parameters for running an observation via a strategy. */
 export interface ObservationRunOpts {
@@ -24,6 +24,7 @@ export interface ObservationRunOpts {
   reflectionHooks?: Pick<ObserveHooks, 'onReflectionStart' | 'onReflectionEnd'>;
   agent?: ProcessorAgent;
   requestContext?: RequestContext;
+  currentModel?: ObservationModelContext;
   observabilityContext?: ObservabilityContext;
 }
 

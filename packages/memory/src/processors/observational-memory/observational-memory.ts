@@ -536,8 +536,33 @@ export class ObservationalMemory {
       observeAttachments: config.observation?.observeAttachments ?? true,
     };
 
-    this.resolveObserverExtractors(config.observation?.extract);
-    this.resolveReflectorExtractors(config.reflection?.extract);
+    const observationExtractors = [
+      ...(config.observation?.extract ?? []),
+      ...(config.subconscious && config.observation?.psyches
+        ? [
+            config.subconscious.psyches(
+              Array.isArray(config.observation.psyches)
+                ? { active: config.observation.psyches, phase: 'observation' }
+                : { ...config.observation.psyches, phase: 'observation' },
+            ),
+          ]
+        : []),
+    ];
+    const reflectionExtractors = [
+      ...(config.reflection?.extract ?? []),
+      ...(config.subconscious && config.reflection?.psyches
+        ? [
+            config.subconscious.psyches(
+              Array.isArray(config.reflection.psyches)
+                ? { active: config.reflection.psyches, phase: 'reflection' }
+                : { ...config.reflection.psyches, phase: 'reflection' },
+            ),
+          ]
+        : []),
+    ];
+
+    this.resolveObserverExtractors(observationExtractors);
+    this.resolveReflectorExtractors(reflectionExtractors);
 
     // Resolve reflection config with defaults
     this.reflectionConfig = {
@@ -2984,6 +3009,7 @@ ${formattedMessages}
     writer?: ProcessorStreamWriter;
     agent?: ProcessorAgent;
     requestContext?: RequestContext;
+    currentModel?: ObservationModelContext;
     observabilityContext?: ObservabilityContext;
     /** Called with the final candidate messages after cursor filtering, before the observer runs.
      *  Use this to seal messages in a live MessageList and persist them to storage. */
@@ -3133,7 +3159,9 @@ ${formattedMessages}
         cycleId,
         startedAt,
         writer,
+        agent: opts.agent,
         requestContext,
+        currentModel: opts.currentModel,
         observabilityContext,
       }).run();
 
@@ -3442,6 +3470,7 @@ ${formattedMessages}
     agent?: ProcessorAgent;
     requestContext?: RequestContext;
     writer?: ProcessorStreamWriter;
+    currentModel?: ObservationModelContext;
     observabilityContext?: ObservabilityContext;
   }): Promise<{
     observed: boolean;
@@ -3491,6 +3520,7 @@ ${formattedMessages}
           agent,
           requestContext,
           writer: opts.writer,
+          currentModel: opts.currentModel,
           observabilityContext: opts.observabilityContext,
         }).run();
         observed = result.observed;

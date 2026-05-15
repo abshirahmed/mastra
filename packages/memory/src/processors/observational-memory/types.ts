@@ -4,6 +4,7 @@ import type { ObservationalMemoryModelSettings } from '@mastra/core/memory';
 import type { MemoryStorage } from '@mastra/core/storage';
 import type { Extractor } from './extractor';
 import type { ModelByInputTokens } from './model-by-input-tokens';
+import type { PsycheSelection, Subconscious } from './subconscious';
 
 /**
  * Threshold can be a simple number or a dynamic range.
@@ -268,6 +269,14 @@ export interface ObservationConfig {
    * @experimental
    */
   extract?: Array<Extractor<any>>;
+
+  /**
+   * Experimental subconscious psyche selection compiled into an Observational Memory extractor.
+   * Requires `subconscious` on the root ObservationalMemory config.
+   *
+   * @experimental
+   */
+  psyches?: PsycheSelection;
 }
 
 /**
@@ -370,6 +379,14 @@ export interface ReflectionConfig {
    * @experimental
    */
   extract?: Array<Extractor<any>>;
+
+  /**
+   * Experimental subconscious psyche selection compiled into a Reflector extractor.
+   * Requires `subconscious` on the root ObservationalMemory config.
+   *
+   * @experimental
+   */
+  psyches?: PsycheSelection;
 }
 
 /**
@@ -996,6 +1013,13 @@ export interface ObservationalMemoryConfig {
    * Reflection step configuration.
    */
   reflection?: ReflectionConfig;
+
+  /**
+   * Experimental subconscious psyche router used by observation/reflection `psyches` sugar.
+   *
+   * @experimental
+   */
+  subconscious?: Subconscious;
 
   /**
    * Memory scope for observations.

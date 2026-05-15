@@ -1418,7 +1418,6 @@ export function parseObserverOutput(
 
   void additionalExtractors;
   const observations = sanitizeObservationLines(parsed.observations || '');
-
   return {
     observations,
     currentTask: parsed.currentTask || undefined,
