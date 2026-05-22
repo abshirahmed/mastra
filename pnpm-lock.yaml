@@ -1013,6 +1013,9 @@ importers:
       fs-extra:
         specifier: ^11.3.4
         version: 11.3.4
+      rollup:
+        specifier: ^4.0.0
+        version: 4.60.4
       zod:
         specifier: ^3.25.0 || ^4.0.0
         version: 3.25.76
@@ -2185,7 +2188,7 @@ importers:
         version: 0.215.0
       '@opentelemetry/auto-instrumentations-node':
         specifier: '>=0.50.0'
-        version: 0.56.1(@opentelemetry/api@1.9.1)
+        version: 0.56.1(@opentelemetry/api@1.9.1)(encoding@0.1.13)
       '@opentelemetry/sdk-node':
         specifier: '>=0.50.0'
         version: 0.208.0(@opentelemetry/api@1.9.1)
@@ -2515,6 +2518,9 @@ importers:
       '@ai-sdk/provider-utils':
         specifier: ^3.0.25
         version: 3.0.25(zod@3.25.76)
+      '@ai-sdk/ui-utils':
+        specifier: ^1.2.11
+        version: 1.2.11(zod@3.25.76)
       '@internal/lint':
         specifier: workspace:*
         version: link:../_config
@@ -2524,6 +2530,12 @@ importers:
       '@microsoft/api-extractor':
         specifier: ^7.58.7
         version: 7.58.7(@types/node@22.19.19)
+      '@opentelemetry/api':
+        specifier: ^1.9.1
+        version: 1.9.1
+      '@standard-schema/spec':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@types/node':
         specifier: 22.19.19
         version: 22.19.19
@@ -2539,6 +2551,12 @@ importers:
       eslint:
         specifier: ^10.2.1
         version: 10.3.0(jiti@2.6.1)
+      eventsource-parser:
+        specifier: ^3.0.6
+        version: 3.0.8
+      json-schema:
+        specifier: ^0.4.0
+        version: 0.4.0
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(patch_hash=78092cc873f6c3c61ff4846b4b326faa7db54bb3c1506c510614d708601e2b7f)(@microsoft/api-extractor@7.58.7(@types/node@22.19.19))(@swc/core@1.15.7(@swc/helpers@0.5.17))(jiti@2.6.1)(postcss@8.5.14)(tsx@4.22.3)(typescript@6.0.3)(yaml@2.9.0)
@@ -5504,6 +5522,9 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 4.1.5(@opentelemetry/api@1.9.1)(@types/node@22.19.19)(@vitest/coverage-v8@4.1.5)(@vitest/ui@4.1.5)(jsdom@26.1.0(bufferutil@4.1.0))(msw@2.14.6(@types/node@22.19.19)(typescript@6.0.3))(vite@7.3.1(@types/node@22.19.19)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.44.1)(tsx@4.22.3)(yaml@2.9.0))
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
 
   stores/cloudflare:
     dependencies:
@@ -6523,13 +6544,13 @@ importers:
 
   voice/cloudflare:
     dependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20260418.1
+        version: 4.20260511.1
       cloudflare:
         specifier: ^5.2.0
         version: 5.2.0(encoding@0.1.13)
     devDependencies:
-      '@cloudflare/workers-types':
-        specifier: ^4.20260418.1
-        version: 4.20260511.1
       '@internal/lint':
         specifier: workspace:*
         version: link:../../packages/_config
@@ -6853,9 +6874,6 @@ importers:
 
   voice/murf:
     dependencies:
-      ky:
-        specifier: ^1.14.3
-        version: 1.14.3
       zod:
         specifier: ^3.25.0 || ^4.0.0
         version: 3.25.76
@@ -23506,10 +23524,6 @@ packages:
   kubernetes-types@1.30.0:
     resolution: {integrity: sha512-Dew1okvhM/SQcIa2rcgujNndZwU8VnSapDgdxlYoB84ZlpAD43U6KLAFqYo17ykSFGHNPrg0qry0bP+GJd9v7Q==}
 
-  ky@1.14.3:
-    resolution: {integrity: sha512-9zy9lkjac+TR1c2tG+mkNSVlyOpInnWdSMiue4F+kq8TwJSgv6o8jhLRg8Ho6SnZ9wOYUq/yozts9qQCfk7bIw==}
-    engines: {node: '>=18'}
-
   kysely@0.28.8:
     resolution: {integrity: sha512-QUOgl5ZrS9IRuhq5FvOKFSsD/3+IA6MLE81/bOOTRA/YQpKDza2sFdN5g6JCB9BOpqMJDGefLCQ9F12hRS13TA==}
     engines: {node: '>=20.0.0'}
@@ -29567,7 +29581,7 @@ snapshots:
   '@ai-sdk/provider-utils@2.1.10(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 1.0.9
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.0.8
       nanoid: 3.3.11
       secure-json-parse: 2.7.0
     optionalDependencies:
@@ -29591,7 +29605,7 @@ snapshots:
     dependencies:
       '@ai-sdk/provider': 2.0.1
       '@standard-schema/spec': 1.1.0
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.0.8
       zod: 4.3.6
     optional: true
 
@@ -36339,7 +36353,7 @@ snapshots:
       cors: 2.8.6
       cross-spawn: 7.0.6
       eventsource: 3.0.7
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.0.8
       express: 5.2.1
       express-rate-limit: 8.5.1(express@5.2.1)
       hono: 4.12.18
@@ -36363,7 +36377,7 @@ snapshots:
       cors: 2.8.6
       cross-spawn: 7.0.6
       eventsource: 3.0.7
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.0.8
       express: 5.2.1
       express-rate-limit: 8.5.1(express@5.2.1)
       hono: 4.12.18
@@ -36878,7 +36892,7 @@ snapshots:
 
   '@opentelemetry/api@1.9.1': {}
 
-  '@opentelemetry/auto-instrumentations-node@0.56.1(@opentelemetry/api@1.9.1)':
+  '@opentelemetry/auto-instrumentations-node@0.56.1(@opentelemetry/api@1.9.1)(encoding@0.1.13)':
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.1)
@@ -36925,7 +36939,7 @@ snapshots:
       '@opentelemetry/resource-detector-aws': 1.12.0(@opentelemetry/api@1.9.1)
       '@opentelemetry/resource-detector-azure': 0.6.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/resource-detector-container': 0.6.1(@opentelemetry/api@1.9.1)
-      '@opentelemetry/resource-detector-gcp': 0.33.1(@opentelemetry/api@1.9.1)
+      '@opentelemetry/resource-detector-gcp': 0.33.1(@opentelemetry/api@1.9.1)(encoding@0.1.13)
       '@opentelemetry/resources': 1.30.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/sdk-node': 0.57.2(@opentelemetry/api@1.9.1)
     transitivePeerDependencies:
@@ -38685,7 +38699,7 @@ snapshots:
       '@opentelemetry/core': 2.7.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/resources': 2.7.1(@opentelemetry/api@1.9.1)
 
-  '@opentelemetry/resource-detector-gcp@0.33.1(@opentelemetry/api@1.9.1)':
+  '@opentelemetry/resource-detector-gcp@0.33.1(@opentelemetry/api@1.9.1)(encoding@0.1.13)':
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/core': 1.30.1(@opentelemetry/api@1.9.1)
@@ -47160,7 +47174,7 @@ snapshots:
 
   eventsource@3.0.7:
     dependencies:
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.0.8
 
   execa@5.1.1:
     dependencies:
@@ -49426,8 +49440,6 @@ snapshots:
   kolorist@1.8.0: {}
 
   kubernetes-types@1.30.0: {}
-
-  ky@1.14.3: {}
 
   kysely@0.28.8: {}
 
