@@ -405,7 +405,7 @@ export function createAgentStreamToAISDKTransformer<OUTPUT>(
             if (workflowChunk) {
               if (Array.isArray(workflowChunk)) {
                 for (const item of workflowChunk) {
-                  controller.enqueue(item);
+                  if (item) controller.enqueue(item);
                 }
               } else {
                 controller.enqueue(workflowChunk);
