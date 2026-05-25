@@ -1,5 +1,15 @@
 # @mastra/core
 
+## 1.37.0-alpha.6
+
+### Patch Changes
+
+- Added sub-agent token usage to `onDelegationComplete` results, so apps can track per-sub-agent token costs ([#15825](https://github.com/mastra-ai/mastra/pull/15825))
+
+- Fixed a race that could cause an immediate auto-resume of a suspended tool call to fail on some storage backends. Resume now succeeds reliably whether the underlying storage is fast or slow. ([#17015](https://github.com/mastra-ai/mastra/pull/17015))
+
+  Fixes [#16158](https://github.com/mastra-ai/mastra/issues/16158).
+
 ## 1.37.0-alpha.5
 
 ### Patch Changes
